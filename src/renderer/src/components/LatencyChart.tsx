@@ -219,16 +219,17 @@ export function LatencyChart({
       },
       color: chartStyle.traces,
       grid: [
-        { left: 62, right: 24, top: 42, bottom: 60 },
-        { left: 62, right: 24, height: 30, bottom: 27 }
+        { left: 68, right: 40, top: 68, bottom: 74 },
+        { left: 68, right: 40, height: 30, bottom: 34 }
       ],
       legend: {
         data: targets.map((target) => target.name),
         type: 'scroll',
         top: 4,
-        left: 54,
-        right: 18,
-        textStyle: { color: chartStyle.text, fontSize: 11, fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif' },
+        left: 68,
+        right: 40,
+        padding: [4, 0],
+        textStyle: { color: chartStyle.text, fontSize: 11, lineHeight: 16, fontFamily: 'Inter, ui-sans-serif, system-ui, sans-serif' },
         itemWidth: 18,
         itemHeight: 2,
         itemGap: 17
@@ -268,7 +269,15 @@ export function LatencyChart({
           gridIndex: 1,
           min: axisFrom,
           max: axisTo,
-          axisLabel: { color: chartStyle.text, fontSize: 10, hideOverlap: true, margin: 11, formatter: (value: number) => chartTime(value, locale, axisSpan) },
+          axisLabel: {
+            color: chartStyle.text,
+            fontSize: 10,
+            hideOverlap: true,
+            alignMinLabel: 'left',
+            alignMaxLabel: 'right',
+            margin: 11,
+            formatter: (value: number) => chartTime(value, locale, axisSpan)
+          },
           axisLine: { lineStyle: { color: chartStyle.axis } },
           axisTick: { show: false },
           splitLine: { show: false }
@@ -279,7 +288,7 @@ export function LatencyChart({
           type: 'value',
           gridIndex: 0,
           name: t('trace.rttAxis'),
-          nameTextStyle: { color: chartStyle.text, fontSize: 10, padding: [0, 0, 0, -4] },
+          nameTextStyle: { color: chartStyle.text, fontSize: 10, lineHeight: 14 },
           axisLabel: { color: chartStyle.text, fontSize: 10, formatter: '{value}' },
           axisLine: { show: false },
           axisTick: { show: false },

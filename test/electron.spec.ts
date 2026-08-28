@@ -63,6 +63,7 @@ test('frontend shell keeps navigation, chart, dialogs, and locales inside their 
 
     await expect(page.locator('.latency-chart')).toBeVisible({ timeout: 15_000 })
     await page.screenshot({ path: testInfo.outputPath('electron-desktop-top.png') })
+    await page.locator('.trace-panel').screenshot({ path: testInfo.outputPath('electron-desktop-trace.png') })
 
     await page.getByRole('button', { name: 'Data table' }).click()
     await expect(page.getByRole('heading', { name: 'Recent latency samples' })).toBeVisible()
@@ -168,6 +169,7 @@ test('frontend shell keeps navigation, chart, dialogs, and locales inside their 
     }))
     expect(frenchNavigationGeometry.scrollWidth).toBeLessThanOrEqual(frenchNavigationGeometry.clientWidth)
     await page.screenshot({ path: testInfo.outputPath('electron-french-compact.png') })
+    await page.locator('.trace-panel').screenshot({ path: testInfo.outputPath('electron-french-trace.png') })
 
     await page.locator('.window-control-close').click()
     await expect.poll(() => electronApp.evaluate(({ BrowserWindow }) =>
